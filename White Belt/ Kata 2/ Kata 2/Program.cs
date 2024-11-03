@@ -1,0 +1,14 @@
+﻿string name = "Lord";
+int level = 98;
+float healthPoints = 9766.75f;
+double experiencePoints = 98345.25;
+bool magicAbility = true;
+char rank = 'S';
+double expNextLevel = (level + 1) * 1000;
+Console.WriteLine($"Character Name: {name}");
+Console.WriteLine($"Level: {level}");
+Console.WriteLine($"Health Points: {healthPoints}");
+Console.WriteLine($"Current Experience Points: {experiencePoints}");
+Console.WriteLine($"Has Magic Ability: {magicAbility}");
+Console.WriteLine($"Rank: {rank}");
+Console.WriteLine($"Experience for next level: {expNextLevel- experiencePoints}");
