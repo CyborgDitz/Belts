@@ -1,8 +1,8 @@
 ﻿string[] enemies ={"Goblin", "Orc", "Troll", "Money Wizard"};
 Console.WriteLine("A choice of enemy in the arena...:");
-for (int i = 0; i < enemies.Length; i++)
+foreach (string enemy in enemies)
 {
-    Console.WriteLine(enemies[i]);
+    Console.WriteLine(enemy);
 }
 
 List<string> inventory = new List<string>();
