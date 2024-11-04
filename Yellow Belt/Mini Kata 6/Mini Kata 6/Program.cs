@@ -22,6 +22,5 @@ newInventory[newInventory.Length-1] = newItem;
 Console.WriteLine("New Inventory:");
 for (int i = 0; i < newInventory.Length; i++)
 {
- 
     Console.WriteLine(newInventory[i]);
 }
