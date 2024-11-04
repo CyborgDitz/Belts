@@ -20,6 +20,8 @@ foreach (string item in inventory)
 {
     Console.WriteLine(item);
 }
+
+Console.WriteLine($"Total items in inventory: {inventory.Count}");
 // Console.WriteLine(inventory);
 // for (int i = 0; i < inventory.Length; i++)
 // {
