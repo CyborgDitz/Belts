@@ -2,15 +2,17 @@ namespace DefaultNamespace;
 
 public class Enemy
 {
+    private int _damage;
     public string Name { get; private set; }
     public int Health {get; private set;}
-    private int _damage;
+    public int ExpGiven {get; private set;}
 
-    public Enemy(string name, int health, int damage)
+    public Enemy(string name, int health, int damage, int expGiven)
     {
         Name = name;
         Health = health;
         _damage = damage;
+        ExpGiven = expGiven;
     }
 
     public void TakeDamage(int damage)
