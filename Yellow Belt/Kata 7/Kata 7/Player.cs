@@ -15,7 +15,7 @@ public class Player
         _experience = experience;
     }
 
-    public void WriteSheet()
+    public void PlayerSheet()
     {
         Console.WriteLine(
             $"Player Name: {_name}\nHealth: {_health}\nLevel: {_level}\nExperience: {_experience}");
@@ -23,7 +23,6 @@ public class Player
 
     public void Attack(int damage, string target)
     {
-        damage = 50;
         Console.WriteLine($"{_name} dealt {damage} damage to {target}!");
     }
 

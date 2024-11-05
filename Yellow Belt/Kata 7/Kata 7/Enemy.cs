@@ -2,28 +2,28 @@ namespace DefaultNamespace;
 
 public class Enemy
 {
-    private string _name { get; }
-    private int _health;
+    public string Name { get; private set; }
+    public int Health {get; private set;}
     private int _damage;
 
     public Enemy(string name, int health, int damage)
     {
-        _name = name;
-        _health = health;
+        Name = name;
+        Health = health;
         _damage = damage;
     }
 
     public void TakeDamage(int damage)
     {
-        _health -= damage;
-        Console.WriteLine($"The {_name} takese {damage} damage");
-        if (_health <= 0)
+        Health -= damage;
+        Console.WriteLine($"The {Name} takes {damage} damage");
+        if (Health <= 0)
         {
-            Console.WriteLine("The OrcBjork dies");
+            Console.WriteLine($"The {Name} dies");
         }
     }
-    public void WriteSheet()
+    public void EnemySheet()
     {
-        Console.WriteLine($"Enemy Name: {_name}\nHealth: {_health}\nDamage: {_damage}");
+        Console.WriteLine($"Enemy Name: {Name}\nHealth: {Health}\nDamage: {_damage}");
     }
 }
