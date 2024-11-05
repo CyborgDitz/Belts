@@ -14,6 +14,6 @@ public class Enemy
     }
     public void WriteSheet()
     {
-        Console.WriteLine($"Enemy Name: {_name} -:- Health: {_health} -:- Damage: {_damage}");
+        Console.WriteLine($"Enemy Name: {_name}\nHealth: {_health}\nDamage: {_damage}");
     }
 }
