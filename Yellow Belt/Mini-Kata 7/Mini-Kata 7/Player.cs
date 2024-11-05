@@ -15,6 +15,6 @@ public class Player
 
     public void WriteSheet()
     {
-        Console.WriteLine($"Player Name: {_name} -:- Health: {_health} -:- Level: {_level}");
+        Console.WriteLine($"Player Name: {_name}\nHealth: {_health}\nLevel: {_level}");
     }
 }
