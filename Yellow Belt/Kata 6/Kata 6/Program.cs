@@ -1,0 +1,1 @@
+﻿string[] enemies = { "Goblin", "Orc", "Dragon", "Slime"}
