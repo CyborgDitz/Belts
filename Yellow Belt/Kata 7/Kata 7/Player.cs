@@ -5,7 +5,7 @@ public class Player
     private string _name;
     private int _health;
     private int _level;
-    private int _experience,
+    private int _experience;
 
     public Player(string name, int health, int level, int experience)
     {
@@ -18,7 +18,7 @@ public class Player
     public void WriteSheet()
     {
         Console.WriteLine(
-            $"Player Name: {_name} -:- Health: {_health} -:- Level: {_level} -:- Experience: {experience}");
+            $"Player Name: {_name} -:- Health: {_health} -:- Level: {_level} -:- Experience: {_experience}");
     }
 
     public void Attack(int damage)
