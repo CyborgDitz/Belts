@@ -21,7 +21,7 @@ public class Player
             $"Player Name: {_name}\nHealth: {_health}\nLevel: {_level}\nExperience: {_experience}");
     }
 
-    public void Attack(int damage, string enymyName)
+    public void Attack(int damage, string target)
     {
         damage = 50;
         Console.WriteLine($"{_name} dealt {damage} damage to {target}!");
