@@ -5,16 +5,15 @@ public class Player : Entity
     // private string _name;
     // private int _health;
     private int _level;
-
-    public Player(string name, int health, int level)
+    static readonly string PlayerName = "Player";
+    static readonly int playerHealth = 5155;
+    public Player(string name, int health, int level) : base (name, health)
     {
-        Name = name;
-        Health = health;
         _level = level;
     }
 
     public void Attack(int damage, string target)
     {
-        Console.WriteLine($"{Name} attacks {target} and deals {damage}");
+        Console.WriteLine($"{PlayerName} attacks {target} and deals {damage}");
     }
 }

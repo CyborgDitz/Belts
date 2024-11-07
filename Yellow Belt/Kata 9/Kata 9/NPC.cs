@@ -2,17 +2,28 @@ namespace Kata_9;
 
 public class NPC : Entity
 {
-    // private string _name;
-    private string _dialogue;
+    private readonly string _name;
+    
+    public List<string> Dialogue;
 
-    public NPC(string name, string dialogue)
+    public NPC(List<string> dialogue, string name, int health) : base (name, health)
     {
-        Name = name;
-        _dialogue = dialogue;
+        _name = name;
+        Health = health;
+        Dialogue = dialogue;
     }
 
     public void Speak()
     {
-        Console.WriteLine($"{Name} says {_dialogue}!");
+        Console.WriteLine($"{_name} says {Dialogue}!");
     }
+
+    public List<NPC> dialogue = [];
+
+    void ListDialogue(List<string> dialogue)
+    {
+        dialogue.Add($"{_name} says: Welcome to our village!");
+        
+    }
+    
 }

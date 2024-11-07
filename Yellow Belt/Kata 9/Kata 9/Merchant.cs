@@ -1,13 +1,17 @@
 namespace Kata_9;
 
-public class Merchant : Entity
+public class Merchant : NPC
 {
     // private string _name;
     private List<string> _inventory;
 
-    public Merchant(string name, List<string> inventory)
+    public Merchant(
+        List<string> inventory,
+        List<string> dialogue,
+        string name, 
+        int health ) : base(dialogue,  name, health)
     {
-        Name = name;
+        // Name = name;
         _inventory = inventory;
     }
 
