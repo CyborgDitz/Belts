@@ -13,6 +13,6 @@ public class Merchant : Entity
 
     public void Trade()
     {
-        Console.WriteLine($"{_name} inventory");
+        Console.WriteLine($"{Name} inventory");
     }
 }

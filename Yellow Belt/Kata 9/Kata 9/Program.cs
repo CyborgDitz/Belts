@@ -1,3 +1,4 @@
-﻿82qwA// See https://aka.ms/new-console-template for more information
+﻿using Kata_9;
 
-Console.WriteLine("Hello, World!");
+Player player = new ("Abba", 99, 5);
+Enemy enemy = new ("Orc",100,5);

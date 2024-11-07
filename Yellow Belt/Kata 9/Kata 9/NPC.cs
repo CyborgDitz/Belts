@@ -7,12 +7,12 @@ public class NPC : Entity
 
     public NPC(string name, string dialogue)
     {
-        _name = name;
+        Name = name;
         _dialogue = dialogue;
     }
 
     public void Speak()
     {
-        Console.WriteLine($"{_name} says {_dialogue}!");
+        Console.WriteLine($"{Name} says {_dialogue}!");
     }
 }
