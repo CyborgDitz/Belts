@@ -31,5 +31,6 @@ public class Enemy
     public void EnemySheet()
     {
         Console.WriteLine($"Enemy Name: {Name}\nHealth: {Health}\nDamage: {Damage}");
+        
     }
 }

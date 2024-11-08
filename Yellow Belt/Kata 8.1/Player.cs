@@ -19,7 +19,6 @@ public class Player
     {
         Console.WriteLine(
             $"Player Name: {_name}\nHealth: {_health}\nLevel: {_level}\nExperience: {_experience}");
-        Thread.Sleep(1000);
     }
 
     public void Attack(int damage, string target)
