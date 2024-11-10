@@ -2,29 +2,25 @@
 
 public class Enemy
 {
-    private string _type;
-    private int _health;
-    private int _damage;
+    public string Type { get; private set; }
+    public int Health { get; private set; }
+    public int Damage { get; private set; }
 
     public Enemy(string type, int health, int damage)
     {
-        _type = type;
-        _health = health;
-        _damage = damage;
+        Type = type;
+        Health = health;
+        Damage = damage;
     }
 
-    public void TakeDamage(int damage)
+    public void EnemyTakeDamage(string type, int damageTaken)
     {
-        _health -= damage;
-        Console.WriteLine($"{_type} takes {damage} damage!");
+        Health -= damageTaken;
+        Console.WriteLine($"{type} takes {damageTaken} damage!");
     }
 // DRY
     public bool IsAlive()
     {
-        if (_health > 0)
-        {
-            return true;
-        }
-        return false;
+        return Health > 0;
     }
 }

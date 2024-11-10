@@ -2,46 +2,40 @@
 
 public class Player
 {
-   private string _name;
-   private int _health;
-   private int _level;
-   private int _experience;
+   public string Name { get; private set; }
+   public int Health {get; private set;}
+   public int Level { get; private set; }
+   public int Experience { get; private set; }
 
     public Player(string name, int health, int level, int experience)
     {
-        _name = name;
-        _health = health;
-        _level = level;
-        _experience = experience;
+        Name = name;
+        Health = health;
+        Level = level;
+        Experience = experience;
     }
 
-    public void Attack(Enemy enemy, int atkDamage)
+    public void Attack(string target, int atkDamage)
     {
-        Console.WriteLine($"{_name} attacked {enemy} for {atkDamage}");
+        Console.WriteLine($"{Name} attacked {target} for {atkDamage}");
     }
 //DRY
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damageTaken)
     {
-        _health -= damage;
-        Console.WriteLine($"{_name} takes {damage} damage!");
+        Health -= damageTaken;
+        Console.WriteLine($"{Name} takes {damageTaken} damage!");
     }
 
     public void GainExperience(int expGain)
     {
-        _experience += expGain;
-        if (_experience >= 100)
-        {
-            _level++;
-            _experience -= 100;
-        }
+        Experience += expGain;
+        if (Experience < 100) return;
+        Level++;
+        Experience -= 100;
     }
 // DRY
     public bool IsAlive()
     {
-        if (_health > 0)
-        {
-            return true;
-        }
-        return false;
+        return Health > 0;
     }
 }
