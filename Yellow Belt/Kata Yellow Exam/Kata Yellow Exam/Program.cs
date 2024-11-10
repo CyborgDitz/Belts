@@ -19,11 +19,11 @@ void SpawnEnemies()
     int randomDmg = random.Next(1, 10);
     int randomHealth = random.Next(30, 100);
     
-    var enemy = n
+    var enemy = new Enemy(
 }
 
 void EnemyList(List<string> randomType)
 {
-    int randomEnemyFromList = random.Next(1, 5);
+    int randomEnemyFromList = random.Next(0, 4);
     randomType = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
 }
