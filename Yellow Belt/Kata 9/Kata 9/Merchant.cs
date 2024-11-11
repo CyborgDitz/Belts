@@ -6,17 +6,23 @@ public class Merchant : NPC
     private List<string> _inventory;
 
     public Merchant(
-        List<string> inventory,
-        List<string> dialogue,
-        string name, 
-        int health ) : base(dialogue,  name, health)
+        
+        string dialogue,
+        string name) : base(name, dialogue)
     {
-        // Name = name;
-        _inventory = inventory;
+        _inventory = new List<string>();
+        
     }
 
-    public void Trade()
-    {
-        Console.WriteLine($"{Name} inventory");
+ 
+        public void Trade()
+        {
+            _inventory.Add($"Sword");
+            _inventory.Add($"Staff");
+            foreach (string line in _inventory)
+            {
+                Console.WriteLine(line);
+            }
+            Thread.Sleep(2000);
+        }
     }
-}

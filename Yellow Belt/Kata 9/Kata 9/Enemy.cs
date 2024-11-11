@@ -15,11 +15,11 @@ public class Enemy : Entity
     public void TakeDamage()
     {
         Health -= Damage;
+        Console.WriteLine($"The {Type} takes {Damage} damage and it's health is now {Health}");
         if (!IsAlive())
         {
             Console.WriteLine($"The {Type} dies");
         }
-        Console.WriteLine($"The {Type} takes {Damage} damage and it's health is now {Health}");
     }
     
 }

@@ -1,6 +1,6 @@
 namespace Kata_9;
 
-public class Entity
+public abstract class Entity
 {
     public string Name { get; protected set; }
     public int Health { get; protected set; }

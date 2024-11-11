@@ -1,36 +1,28 @@
 namespace Kata_9;
 
-public class NPC : Entity
+public class NPC
 {
-    private readonly string _name;
-    
-    public List<string> Dialogue;
+    protected readonly string Name;
+    private readonly string _dialogue;
 
-    public NPC(List<string> dialogue, string name, int health) : base (name, health)
+    public NPC(string name, string dialogue)
     {
-        _name = name;
-        Health = health;
-        Dialogue = dialogue;
+        Name = name;
+        _dialogue = dialogue;
+
     }
-
-    public string Speak()
+    public void Speak()
     {
-        return $"{_name} says {dialogue[0]}!";
+        Console.WriteLine($"{Name} says {_dialogue}!");
     }
-
-    public List<NPC> dialogue = [];
-
-    void ListDialogue(List<string> dialogue)
+    public void DialogueList(List<string> dialogue)
     {
-        dialogue.Add($"{_name} says: Welcome to our village!");
-        dialogue.Add($"{_name} says: What is your name?");
-        dialogue.Add($"{_name} says: Can you find my missing son?");
-        dialogue.Add($"{_name} says: He went into the forest and did not return.");
-        dialogue.Add($"{_name} says: The forest is up north. Please find him.");
+        dialogue.Add($"{Name} says: Welcome to our village!");
+        dialogue.Add($"{Name} says: What is your name?");
         foreach (string line in dialogue)
         {
             Console.WriteLine(line);
-            Thread.Sleep(2000); // Wait for 2 seconds before displaying the next line
+            Thread.Sleep(2000);
         }
     }
 }
