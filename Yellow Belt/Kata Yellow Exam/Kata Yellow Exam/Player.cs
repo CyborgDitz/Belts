@@ -2,12 +2,12 @@
 
 public class Player
 {
-   public string Name { get; private set; }
+   public string? Name { get; private set; }
    public int Health {get; private set;}
    public int Level { get; private set; }
    public int Experience { get; private set; }
 
-    public Player(string name, int health, int level, int experience)
+    public Player(string? name, int health, int level, int experience)
     {
         Name = name;
         Health = health;

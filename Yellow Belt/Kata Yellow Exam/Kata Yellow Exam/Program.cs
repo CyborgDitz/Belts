@@ -1,26 +1,42 @@
 ﻿using Kata_Yellow_Exam;
 
 Random random = new Random();
-CharacterCreation();
-SpawnEnemies();
-void CharacterCreation()
+
+string? inputName = CharacterCreation();
+var player = new Player(inputName, 155, 5, 69);
+
+string? CharacterCreation()
 {
     Console.WriteLine("What is your name Adventurer?");
-    string? inputName = Console.ReadLine();
-    var player = new Player(inputName, 155, 5, 69);
+    return Console.ReadLine();
 }
 
+void CombatRound()
+{
+    SpawnEnemies();
+}
 void SpawnEnemies()
 {
-    EnemyList();
-    int randomDmg = random.Next(1, 10);
-    int randomHealth = random.Next(30, 100);
-    
-    // var enemy = new Enemy(
+    int randomMonsters = random.Next(1, 4);
+    for (int i = 0; i < randomMonsters; i++)
+    {
+        Enemy randomEnemy = EnemyList();
+        Console.WriteLine($"Generated a new enemy: {randomEnemy.Type}" +
+                          $" with {randomEnemy.Health} health" +
+                          $" and {randomEnemy.Damage} damage.");
+    }
+
 }
 
-void EnemyList()
+Enemy EnemyList()
 {
-    int randomEnemyFromList = random.Next(0, 4);
-    var list = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
+    var enemyTypes = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
+    int randomList = random.Next(enemyTypes.Count);
+    string randomType = enemyTypes[randomList];
+    
+    int randomDmg = random.Next(1, 10);
+    int randomHealth = random.Next(5, 31);
+    
+    return new Enemy(randomType, randomDmg, randomHealth);
+    
 }

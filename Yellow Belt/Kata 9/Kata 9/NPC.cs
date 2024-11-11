@@ -13,9 +13,9 @@ public class NPC : Entity
         Dialogue = dialogue;
     }
 
-    public void Speak()
+    public string Speak()
     {
-        Console.WriteLine($"{_name} says {Dialogue}!");
+        return $"{_name} says {dialogue[0]}!";
     }
 
     public List<NPC> dialogue = [];
@@ -23,7 +23,14 @@ public class NPC : Entity
     void ListDialogue(List<string> dialogue)
     {
         dialogue.Add($"{_name} says: Welcome to our village!");
-        
+        dialogue.Add($"{_name} says: What is your name?");
+        dialogue.Add($"{_name} says: Can you find my missing son?");
+        dialogue.Add($"{_name} says: He went into the forest and did not return.");
+        dialogue.Add($"{_name} says: The forest is up north. Please find him.");
+        foreach (string line in dialogue)
+        {
+            Console.WriteLine(line);
+            Thread.Sleep(2000); // Wait for 2 seconds before displaying the next line
+        }
     }
-    
 }
