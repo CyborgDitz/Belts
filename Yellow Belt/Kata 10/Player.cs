@@ -17,6 +17,7 @@ public class Player : Entity
     public int Attack( Enemy target)
     {
         Console.WriteLine($"{PlayerName} attacks {target.Name} and deals {_damage}");
+        Thread.Sleep(2000);
         return _damage;
     }
 }

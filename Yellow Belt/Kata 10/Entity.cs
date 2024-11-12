@@ -1,6 +1,6 @@
 namespace Kata_10;
 
-public abstract class Entity
+public class Entity : ITakeDamage
 {
     public string Name { get; protected set; }
     public int Health { get; protected set; }
@@ -15,5 +15,10 @@ public abstract class Entity
     public bool IsAlive()
     { 
         return Health > 0;
+    }
+
+    public override void TakeDamage()
+    {
+       
     }
 }

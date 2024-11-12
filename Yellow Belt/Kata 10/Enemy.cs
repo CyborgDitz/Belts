@@ -16,6 +16,7 @@ public class Enemy : Entity
     {
         Health -= damage;
         Console.WriteLine($"The {Type} takes {damage} damage and it's health is now {Health}");
+        Thread.Sleep(2000);
         if (!IsAlive())
         {
             Console.WriteLine($"The {Type} dies");

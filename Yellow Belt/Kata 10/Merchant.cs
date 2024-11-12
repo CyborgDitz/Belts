@@ -11,10 +11,14 @@ public class Merchant : NPC
         string name) : base(name, dialogue)
     {
         _inventory = new List<string>();
-        
+        Dialogue = dialogue;
     }
 
- 
+    public void SpeaK()
+    {
+        Console.WriteLine($"{Name} says {Dialogue}!");
+        Thread.Sleep(2000);
+    }
         public void Trade()
         {
             _inventory.Add($"Sword");
@@ -22,7 +26,7 @@ public class Merchant : NPC
             foreach (string line in _inventory)
             {
                 Console.WriteLine(line);
+                
             }
-            Thread.Sleep(2000);
         }
     }

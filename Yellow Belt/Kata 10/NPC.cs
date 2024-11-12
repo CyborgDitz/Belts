@@ -1,20 +1,24 @@
+
+
 namespace Kata_10;
 
-public class NPC
+public class NPC : ISpeak
 {
     protected readonly string Name;
-    private readonly string _dialogue;
+    public string Dialogue {get; protected set;}
 
     public NPC(string name, string dialogue)
     {
         Name = name;
-        _dialogue = dialogue;
+        Dialogue = dialogue;
 
     }
     public void Speak()
     {
-        Console.WriteLine($"{Name} says {_dialogue}!");
+        Console.WriteLine($"{Name} says {Dialogue}!");
+        Thread.Sleep(2000);
     }
+
     public void DialogueList(List<string> dialogue)
     {
         dialogue.Add($"{Name} says: Welcome to our village!");
@@ -26,4 +30,9 @@ public class NPC
         }
     }
     
+}
+
+public interface ISpeak
+{
+    public void Speak();
 }
