@@ -15,17 +15,30 @@ public class Player
         Experience = experience;
     }
 
-    public void Attack(string target, int atkDamage)
+    public void Attack(string target, int damage)
     {
-        Console.WriteLine($"{Name} attacked {target} for {atkDamage}");
+        Console.WriteLine($"{Name} attacked {target} for {damage}");
+        Thread.Sleep(3000);
     }
 //DRY
     public void TakeDamage(int damageTaken)
     {
         Health -= damageTaken;
-        Console.WriteLine($"{Name} takes {damageTaken} damage!");
+        Console.WriteLine($"{Name} takes {damageTaken} damage!" +
+                          $"\nCurrent health: {Health}");
+        Thread.Sleep(3000);
     }
 
+    public void PlayerHeal(int healed, int maxHealth)
+    {
+        Health += healed;
+        if (Health > maxHealth)
+        {
+            Health = maxHealth;
+        }
+        Console.WriteLine($"{Name} heals {healed} health! Current health: {Health}");
+        Thread.Sleep(3000);
+    }
     public void GainExperience(int expGain)
     {
         Experience += expGain;
@@ -34,7 +47,7 @@ public class Player
         Experience -= 100;
     }
 // DRY
-    public bool IsAlive()
+    public bool AmAlive()
     {
         return Health > 0;
     }

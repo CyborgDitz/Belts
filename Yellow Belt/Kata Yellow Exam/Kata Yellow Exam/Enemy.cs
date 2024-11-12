@@ -1,6 +1,6 @@
 ﻿namespace Kata_Yellow_Exam;
 
-public class Enemy
+public class Enemy : Entity
 {
     public string Type { get; private set; }
     public int Health { get; private set; }
@@ -13,14 +13,17 @@ public class Enemy
         Damage = damage;
     }
 
-    public void EnemyTakeDamage(string type, int damageTaken)
+    public void TakeDamage(string type, int damageTaken)
     {
         Health -= damageTaken;
-        Console.WriteLine($"{type} takes {damageTaken} damage!");
+        Console.WriteLine($"{type} takes {damageTaken} damage!" +
+                          $"\n Health: {Health}");
+        Thread.Sleep(3000);
     }
 // DRY
     public bool IsAlive()
     {
         return Health > 0;
     }
+   
 }
