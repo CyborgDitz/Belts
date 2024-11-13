@@ -2,13 +2,10 @@
 GameData gameData = new GameData();
 Random random = new Random();
 string? inputName = gameData.CharacterCreation();
-Player player = new Player(inputName, 155, 5, 69);
+Player player = new Player(inputName, 155, 5, 69, TODO);
+Enemy enemy = gameData.EnemyList();
+GameStart();
 
-
-void CombatRound()
-{
-    player.Attack();
-}
 
 void GameStart()
 {
@@ -17,6 +14,12 @@ void GameStart()
         gameData.RandomEncounter();
         Thread.Sleep(3000);
     }
+
+    CombatRound();
+}
+void CombatRound()
+{
+    player.Attack(enemy.Type, player.);
 }
 
 

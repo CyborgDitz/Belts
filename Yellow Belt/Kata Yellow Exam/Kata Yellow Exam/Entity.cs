@@ -1,16 +1,32 @@
 namespace Kata_Yellow_Exam;
 
-public class Entity : IAttack, ITakeDamage, IAmAlive
+public abstract class Entity : IAttack, ITakeDamage, IAmAlive
 {
-    public void Attack(string target, int damage)
+    protected string? Name { get; set; }
+    protected int Health {get; set;}
+    protected int Damage {get; set;}
+
+    protected Entity(string? name, int health, int damage) 
     {
+        Name = name;
+        Health = health;
+        Damage = damage;
     }
 
-    public void TakeDamage()
+    public void Attack(string name, string target, int damage)
     {
+        Console.WriteLine($"{Name} attacked {target} for {damage}");
+        Thread.Sleep(3000);
+    } 
+    public void TakeDamage(string name, int damageTaken)
+    {
+        Health -= damageTaken;
+        Console.WriteLine($"{Name} takes {damageTaken} damage!" +
+                          $"Current health: {Health}");
+        Thread.Sleep(3000);
     }
     public bool AmAlive()
     {
-        return true;
+        return Health > 0;
     }
 }
