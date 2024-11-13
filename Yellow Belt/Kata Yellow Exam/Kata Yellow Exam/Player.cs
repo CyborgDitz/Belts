@@ -1,5 +1,4 @@
 ﻿namespace Kata_Yellow_Exam;
-
 public class Player : Entity
 {
    // public string? Name { get; private set; }
@@ -14,21 +13,6 @@ public class Player : Entity
         Level = level;
         Experience = experience;
     }
-
-    // public void Attack(string name,string target, int damage)
-    // {
-    //     Console.WriteLine($"{Name} attacked {target} for {damage}");
-    //     Thread.Sleep(3000);
-    // }
-//DRY
-    // public void TakeDamage(int damageTaken)
-    // {
-    //     Health -= damageTaken;
-    //     Console.WriteLine($"{Name} takes {damageTaken} damage!" +
-    //                       $"Current health: {Health}");
-    //     Thread.Sleep(3000);
-    // }
-
     public void PlayerHeal(int healed, int maxHealth)
     {
         Health += healed;
@@ -37,7 +21,7 @@ public class Player : Entity
             Health = maxHealth;
         }
         Console.WriteLine($"{Name} heals {healed} health! Current health: {Health}");
-        Thread.Sleep(3000);
+        Thread.Sleep(1500);
     }
     public void GainExperience(int expGain)
     {
@@ -46,9 +30,19 @@ public class Player : Entity
         Level++;
         Experience -= 100;
     }
-// DRY
-    // public bool AmAlive()
-    // {
-    //     return Health > 0;
-    // }
+
+    public void PlayerAction(Enemy enemy)
+    { Random random = new Random();
+        Console.WriteLine("Will you attack or heal?");
+        string inputAction = Console.ReadLine();
+        if (inputAction.ToLower() == "attack")
+        {
+            Attack(enemy);
+        }
+        else if (inputAction.ToLower() == "heal")
+        {
+            int healRandomAmount = random.Next(1, 100);
+            PlayerHeal(healRandomAmount, 155);
+        }
+    }
 }

@@ -2,11 +2,11 @@
 
 public class Enemy : Entity
 {
-    public string Type { get; private set; }
+    public string? Type { get; private set; }
     // public int Health { get; private set; }
     // public int Damage { get; private set; }
 
-    public Enemy(string? name, int health, int damage, string type ) : base(name, health, damage)
+    public Enemy(string? name, int health, int damage, string? type ) : base(name, health, damage)
     {
         Type = type;
         // Health = health;
@@ -22,9 +22,9 @@ public class Enemy : Entity
     //     Thread.Sleep(3000);
     // }
 // DRY
-    public bool IsAlive()
-    {
-        return Health > 0;
-    }
+    // public bool AmAlive()
+    // {
+    //     return Health > 0;
+    // }
    
 }

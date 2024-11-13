@@ -2,7 +2,7 @@ namespace Kata_Yellow_Exam;
 
 public interface ITakeDamage
 {
-    public void TakeDamage(string name, int damageTaken)
+    public void TakeDamage()
     {
     }
 }

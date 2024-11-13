@@ -6,15 +6,50 @@ public class Merchant : ISpeak
    { "Sword", "Shield", "Cat Friend", "Beer",
        "Bear"
    };
+   readonly List<string> _dialogue = new List<string>()
+   {
+       "The merchant says: Greetings traveller, are you in need of goods?",
+       "Here are my goods!",
+       "What do you want?",
+       "Ok bye then!"
+   };
     public void Speak()
     {
-        Console.WriteLine("The merchant says: Greetings traveller, are you in need of goods?");
-        foreach (string inventory in _inventory)
-        {Console.WriteLine(inventory);}
+        Console.WriteLine(_dialogue[0]);
+        string? input = Console.ReadLine();
+        if (input?.ToLower() == "yes" || input?.ToLower() == "y")
+        {
+            Trade();
+        }
+        else
+        {
+            Console.WriteLine(_dialogue[3]);
+            Thread.Sleep(1500);
+        }
+        
     }
 
     public void Trade()
-    {
-      
+        {
+            Console.WriteLine(_dialogue[1]);
+            foreach (string inventory in _inventory)
+            {Console.WriteLine(inventory);}
+            Thread.Sleep(1500);
+            Console.WriteLine(_dialogue[2]);
+            
+            Console.WriteLine("Enter number or 'exit':");
+            string? input = Console.ReadLine()?.ToLower();
+
+            if (input == "exit") return;
+
+            if (int.TryParse(input, out int itemNumber) && itemNumber >= 1 && itemNumber <= _inventory.Count)
+            {
+                Console.WriteLine($"You selected: {_inventory[itemNumber - 1]}");
+                _inventory.RemoveAt(itemNumber - 1);
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection.");
+            }
+        }
     }
-}

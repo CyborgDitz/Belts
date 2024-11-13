@@ -2,9 +2,9 @@ namespace Kata_Yellow_Exam;
 
 public abstract class Entity : IAttack, ITakeDamage, IAmAlive
 {
-    protected string? Name { get; set; }
-    protected int Health {get; set;}
-    protected int Damage {get; set;}
+    public string? Name { get; set; }
+    public int Health {get; set;}
+    public int Damage {get; private set;}
 
     protected Entity(string? name, int health, int damage) 
     {
@@ -13,17 +13,18 @@ public abstract class Entity : IAttack, ITakeDamage, IAmAlive
         Damage = damage;
     }
 
-    public void Attack(string name, string target, int damage)
+    public void Attack(Entity target)
     {
-        Console.WriteLine($"{Name} attacked {target} for {damage}");
-        Thread.Sleep(3000);
+        Console.WriteLine($"{Name} attacks {target.Name} for {Damage} damage.");
+        target.TakeDamage(Damage);
+        Thread.Sleep(1500);
     } 
-    public void TakeDamage(string name, int damageTaken)
+    public void TakeDamage(int damage)
     {
-        Health -= damageTaken;
-        Console.WriteLine($"{Name} takes {damageTaken} damage!" +
+        Health -= damage;
+        Console.WriteLine($"{Name} takes {damage} damage!" +
                           $"Current health: {Health}");
-        Thread.Sleep(3000);
+        Thread.Sleep(1500);
     }
     public bool AmAlive()
     {

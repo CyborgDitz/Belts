@@ -2,7 +2,8 @@ namespace Kata_Yellow_Exam;
 
 public class GameData
 {
-    NPC npc1 = new NPC();
+    Npc npc1 = new Npc();
+    public Enemy? currentEnemy; 
     Merchant merch1 = new Merchant();
     Random random = new Random();
     
@@ -14,33 +15,23 @@ public class GameData
 
    public void RandomEncounter()
     { 
-        int randomEncounter = random.Next(1, 4);
-        if (randomEncounter == 1)
+        int randomEncounter = random.Next(1, 5);
+        if (randomEncounter == 1 || randomEncounter == 2)
         {
-            SpawnEnemies(); 
-        }
-        else if (randomEncounter == 2)
-        {
-            npc1.Speak();
+            Console.WriteLine("An enemy approaches!");
+            currentEnemy = EnemyList();
+            Console.WriteLine($"A wild {currentEnemy.Type} appears with {currentEnemy.Health} HP and {currentEnemy.Damage} damage!");
+
         }
         else if (randomEncounter == 3)
         {
+            npc1.Speak();
+        }
+        else if (randomEncounter == 4)
+        {
             merch1.Speak();
-            merch1.Trade();
         }
 
-    }
-   
-    void SpawnEnemies()
-    {
-        int randomMonsters = random.Next(1, 4);
-        for (int i = 0; i < randomMonsters; i++)
-        {
-            Enemy randomEnemy = EnemyList();
-            Console.WriteLine($"Generated a new enemy: {randomEnemy.Type}" +
-                              $" with {randomEnemy.Health} health" +
-                              $" and {randomEnemy.Damage} damage.");
-        }
     }
     public Enemy EnemyList()
     { 
@@ -50,9 +41,15 @@ public class GameData
     
         int randomDmg = random.Next(1, 10);
         int randomHealth = random.Next(5, 31);
+        string name = randomType;
     
-        return new Enemy(randomType, randomDmg, randomHealth);
+        return new Enemy(name, randomDmg, randomHealth, randomType);
     
+    }
+    public void CurrentHealth(Entity player, Entity enemy)
+    {
+        Console.WriteLine($"{player.Name}'s Health: {player.Health}");
+        Console.WriteLine($"{enemy.Name}'s Health: {enemy.Health}");
     }
    
 }
