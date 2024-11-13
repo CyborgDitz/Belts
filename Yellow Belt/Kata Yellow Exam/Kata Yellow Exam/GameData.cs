@@ -2,54 +2,65 @@ namespace Kata_Yellow_Exam;
 
 public class GameData
 {
-    Npc npc1 = new Npc();
-    public Enemy? currentEnemy; 
-    Merchant merch1 = new Merchant();
-    Random random = new Random();
-    
-    public string? CharacterCreation()
+    private readonly Npc _npc;
+    private readonly Merchant _merchant;
+    private readonly Enemy _enemy;
+    public Enemy? CurrentEnemy { get; set; }
+    readonly List<string> enemyTypes = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
+
+    readonly Random _random = new Random();
+    public GameData()
+    { 
+        _npc = new Npc();
+        _merchant = new Merchant();
+    }
+
+
+     public string? CharacterCreation()
     {
         Console.WriteLine("What is your name Adventurer?");
         return Console.ReadLine();
     }
+    
 
    public void RandomEncounter()
     { 
-        int randomEncounter = random.Next(1, 5);
-        if (randomEncounter == 1 || randomEncounter == 2)
+        int encounterChance = _random.Next(1, 5);
+        switch (encounterChance)
         {
-            Console.WriteLine("An enemy approaches!");
-            currentEnemy = EnemyList();
-            Console.WriteLine($"A wild {currentEnemy.Type} appears with {currentEnemy.Health} HP and {currentEnemy.Damage} damage!");
+            case 1:
+            case 2:
+            case 3: 
+               EnemySpawn();
+                break;
 
-        }
-        else if (randomEncounter == 3)
-        {
-            npc1.Speak();
-        }
-        else if (randomEncounter == 4)
-        {
-            merch1.Speak();
+            case 4:
+                _npc.Speak();
+                break;
+
+            case 5:
+                _merchant.Speak();
+                break;
         }
 
     }
-    public Enemy EnemyList()
+
+    public void EnemySpawn()
+    {
+        Console.WriteLine("An enemy approaches!");
+        CurrentEnemy = GenerateRandomEnemy();
+        Console.WriteLine($"A wild {CurrentEnemy.Type} appears with {CurrentEnemy.Health} HP and {CurrentEnemy.Damage} damage!");
+    }
+    private Enemy GenerateRandomEnemy()
     { 
-        var enemyTypes = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
-        int randomList = random.Next(enemyTypes.Count);
+        int randomList = _random.Next(enemyTypes.Count);
         string randomType = enemyTypes[randomList];
     
-        int randomDmg = random.Next(1, 10);
-        int randomHealth = random.Next(5, 31);
+        int randomDmg = _random.Next(1, 10);
+        int randomHealth = _random.Next(5, 31);
         string name = randomType;
     
         return new Enemy(name, randomDmg, randomHealth, randomType);
     
     }
-    public void CurrentHealth(Entity player, Entity enemy)
-    {
-        Console.WriteLine($"{player.Name}'s Health: {player.Health}");
-        Console.WriteLine($"{enemy.Name}'s Health: {enemy.Health}");
-    }
-   
 }

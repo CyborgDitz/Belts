@@ -1,44 +1,55 @@
 ﻿using Kata_Yellow_Exam;
+
 GameData gameData = new GameData();
 Random random = new Random();
-Enemy enemy = gameData.EnemyList();
+
+
 string? inputName = gameData.CharacterCreation();
 int playerDamageRoll = random.Next(5, 10);
 int playerLevel = 69;
-Player player = new Player(inputName, 155, playerDamageRoll, playerLevel, 0);
+int playerMaxHealth = 155;
+int randomExp = random.Next(50, 76);
+Player player = new Player(inputName, playerMaxHealth, playerDamageRoll, playerLevel, 0);
 
 
 GameStart();
-
 void GameStart()
 {
     while (player.AmAlive())
     {
         gameData.RandomEncounter();
-        while (gameData.currentEnemy != null && gameData.currentEnemy.AmAlive())
+        
+        // Check if an enemy is encountered and is alive
+        while (gameData.CurrentEnemy != null && gameData.CurrentEnemy.AmAlive())
         {
-            CombatRound(player, gameData.currentEnemy);
-            if (!gameData.currentEnemy.AmAlive())
+            CombatRound(player, gameData.CurrentEnemy);
+
+            // If the enemy is defeated, reward experience
+            if (!gameData.CurrentEnemy.AmAlive())
             {
-                Console.WriteLine($"{gameData.currentEnemy.Type} has been defeated!");
-                gameData.currentEnemy = null; 
-                int expRoll = random.Next(5,56);
-                player.GainExperience(expRoll);
+                EnemyDefeat(randomExp);
             }
-            Thread.Sleep(1500); 
         }
+        
+        Thread.Sleep(1500);
     }
 
     Console.WriteLine("Game Over. You have been defeated!");
 }
 
+
+void EnemyDefeat(int expReward)
+{
+    Console.WriteLine($"{gameData.CurrentEnemy.Type} has been defeated!");
+    gameData.CurrentEnemy = null; 
+              
+    player.GainExperience(randomExp);
+}
 void CombatRound(Player player, Enemy enemy)
 {
-    player.PlayerAction(enemy); // Pass the enemy to PlayerAction
-     
+    player.PlayerAction(enemy); 
     if (enemy.AmAlive())
     {
         enemy.Attack(player);
     }
-    gameData.CurrentHealth(player, enemy);
 }

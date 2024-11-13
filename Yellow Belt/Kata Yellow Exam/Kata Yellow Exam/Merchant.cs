@@ -47,7 +47,7 @@ public class Merchant : ISpeak
 
             if (int.TryParse(input, out int itemNumber) && itemNumber >= 1 && itemNumber <= _inventory.Count)
             {
-                Console.WriteLine($"You selected: {_inventory[itemNumber - 1]}");
+                Console.WriteLine($"You got a: {_inventory[itemNumber - 1]}");
                 _inventory.RemoveAt(itemNumber - 1);
                 Thread.Sleep(1500);
             }

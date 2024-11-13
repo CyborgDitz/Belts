@@ -1,56 +1,66 @@
 ﻿namespace Kata_Yellow_Exam;
 public class Player : Entity
-{
-    private Random random = new Random();
-   // public string? Name { get; private set; }
-   // public int Health {get; private set;}
+{ 
+    private readonly int _maxHealth = 155;
+   private readonly int _expTreshold = 100;
    public int Level { get; private set; }
    public int Experience { get; private set; }
-
-    public Player(string? name, int health, int damage, int level, int experience) : base  (name, health, damage)
+    public Player(string? name, int health, int damage, int level, int experience) 
+        : base  (name, health, damage)
     {
-        // Name = name;
-        // Health = health;
         Level = level;
         Experience = experience;
     }
-    public void PlayerHeal(int healed, int maxHealth)
+    public void PlayerHeal(int healed)
     {
+      
         Health += healed;
-        if (Health > maxHealth)
+        if (Health > _maxHealth)
         {
-            Health = maxHealth;
+            Health = _maxHealth;
         }
         Console.WriteLine($"{Name} heals {healed} health! Current health: {Health}");
         Thread.Sleep(1500);
     }
-    public void GainExperience(int expGain)
+    
+    public void GainExperience(int exp)
     {
+        int expGain = random.Next(5, 56);
         Experience += expGain;
-        int expTreshold = 100;
         Console.WriteLine($"{Name} gains {expGain} experience!");
-        if (Experience > expTreshold)
+        if (Experience > _expTreshold)
         {
-            Level++;
-            Experience -= expTreshold;
-            Console.WriteLine($"{Name} leveled up to {Level} level!");
+            LevelUp();
         }
-
+        
         Console.WriteLine($"Now has {Experience} experience.");
     }
 
-    public void PlayerAction(Enemy enemy)
-    { 
+    public void LevelUp()
+    {
+        Level++;
+        Experience -= _expTreshold;
+        Console.WriteLine($"{Name} leveled up to {Level} level!");
+    }
+    public void PlayerAction(ITakeDamage enemy)
+    {
+        string inputAction = GetPlayerAction();
+        switch (inputAction.ToLower())
+        {
+            case "attack":
+                Attack(enemy);
+                break;
+            case "heal":
+            {
+                int healRandomAmount = random.Next(1, 100);
+                PlayerHeal(healRandomAmount);
+                break;
+            }
+        }
+    }
+    private string GetPlayerAction()
+    {
         Console.WriteLine("Will you attack or heal?");
-        string inputAction = Console.ReadLine();
-        if (inputAction.ToLower() == "attack")
-        {
-            Attack(enemy);
-        }
-        else if (inputAction.ToLower() == "heal")
-        {
-            int healRandomAmount = random.Next(1, 100);
-            PlayerHeal(healRandomAmount, 155);
-        }
+        return Console.ReadLine()?.ToLower() ?? string.Empty; // Handles null or empty input safely
     }
 }
