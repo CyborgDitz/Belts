@@ -1,6 +1,7 @@
 ﻿namespace Kata_Yellow_Exam;
 public class Player : Entity
 {
+    private Random random = new Random();
    // public string? Name { get; private set; }
    // public int Health {get; private set;}
    public int Level { get; private set; }
@@ -26,13 +27,20 @@ public class Player : Entity
     public void GainExperience(int expGain)
     {
         Experience += expGain;
-        if (Experience < 100) return;
-        Level++;
-        Experience -= 100;
+        int expTreshold = 100;
+        Console.WriteLine($"{Name} gains {expGain} experience!");
+        if (Experience > expTreshold)
+        {
+            Level++;
+            Experience -= expTreshold;
+            Console.WriteLine($"{Name} leveled up to {Level} level!");
+        }
+
+        Console.WriteLine($"Now has {Experience} experience.");
     }
 
     public void PlayerAction(Enemy enemy)
-    { Random random = new Random();
+    { 
         Console.WriteLine("Will you attack or heal?");
         string inputAction = Console.ReadLine();
         if (inputAction.ToLower() == "attack")

@@ -32,8 +32,11 @@ public class Merchant : ISpeak
     public void Trade()
         {
             Console.WriteLine(_dialogue[1]);
-            foreach (string inventory in _inventory)
-            {Console.WriteLine(inventory);}
+            for (int i = 0; i < _inventory.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {_inventory[i]}");
+            }
+
             Thread.Sleep(1500);
             Console.WriteLine(_dialogue[2]);
             
@@ -46,10 +49,12 @@ public class Merchant : ISpeak
             {
                 Console.WriteLine($"You selected: {_inventory[itemNumber - 1]}");
                 _inventory.RemoveAt(itemNumber - 1);
+                Thread.Sleep(1500);
             }
             else
             {
                 Console.WriteLine("Invalid selection.");
+                Trade();
             }
         }
     }

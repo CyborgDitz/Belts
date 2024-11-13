@@ -3,8 +3,10 @@ GameData gameData = new GameData();
 Random random = new Random();
 Enemy enemy = gameData.EnemyList();
 string? inputName = gameData.CharacterCreation();
-Player player = new Player(inputName, 155, 5, 69, 333);
-int expRoll = random.Next(5,56);
+int playerDamageRoll = random.Next(5, 10);
+int playerLevel = 69;
+Player player = new Player(inputName, 155, playerDamageRoll, playerLevel, 0);
+
 
 GameStart();
 
@@ -20,6 +22,7 @@ void GameStart()
             {
                 Console.WriteLine($"{gameData.currentEnemy.Type} has been defeated!");
                 gameData.currentEnemy = null; 
+                int expRoll = random.Next(5,56);
                 player.GainExperience(expRoll);
             }
             Thread.Sleep(1500); 
@@ -39,19 +42,3 @@ void CombatRound(Player player, Enemy enemy)
     }
     gameData.CurrentHealth(player, enemy);
 }
-
-
-// void PlayerAction(Enemy enemy)
-//     {
-//         Console.WriteLine("Will you attack or heal?");
-//         string inputAction = Console.ReadLine();
-//         if (inputAction.ToLower() == "attack")
-//         {
-//             player.Attack(enemy);
-//         }
-//         else if (inputAction.ToLower() == "heal")
-//         {
-//             int healRandomAmount = random.Next(1, 100);
-//             player.PlayerHeal(healRandomAmount, 155);
-//         }
-//     }

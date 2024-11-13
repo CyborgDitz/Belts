@@ -22,8 +22,7 @@ public abstract class Entity : IAttack, ITakeDamage, IAmAlive
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        Console.WriteLine($"{Name} takes {damage} damage!" +
-                          $"Current health: {Health}");
+        Console.WriteLine($"{Name} takes {damage} damage!");
         Thread.Sleep(1500);
     }
     public bool AmAlive()

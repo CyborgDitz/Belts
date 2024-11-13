@@ -13,6 +13,7 @@ public class Npc : ISpeak
         foreach (var line in _dialogue)
         {
             Console.WriteLine(line);
+            string input = Console.ReadLine();
             Thread.Sleep(1500); 
         }
     }
