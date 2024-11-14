@@ -9,19 +9,17 @@ public class HealerClass : Character
         PrimaryAction = (target) =>
         {
             int maxHealth = 100;
-            int healingAmount = maxHealth - health;
+            int healingAmount = maxHealth - target.Health;
             if (target.Health < 50)
             {
-                Console.WriteLine($"{Name} is healing {healingAmount}!");
-                target.Health = 100;
+                Console.WriteLine($"{Name} is healing {target.Name} by {healingAmount} points!");
+                target.Health = 100;s
             }
             else
             {
-                Console.WriteLine($"{Name} is healing {healingAmount}!");
-                Health = 100;
+                Console.WriteLine($"{Name} healed thesmelf for {healingAmount} points!");
+                Health = maxHealth;
             }
-            
-           
         };
     }
 }

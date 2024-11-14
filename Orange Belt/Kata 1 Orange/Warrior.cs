@@ -1,7 +1,9 @@
 namespace Kata_1_Orange;
 
-public class WarriorClass
+public class WarriorClass : Character
 {
-    Action<Character> attackAction = character => 
-        Console.WriteLine($"{character.Name} is attacking first due to low health!");
+    public WarriorClass(string name, int health) : base(name, health)
+    {
+        PrimaryAction = (target) => Console.WriteLine($"{Name} is attacking!");
+    }
 }
