@@ -4,11 +4,11 @@ public class Character
 {
     public string Name { get; set; }
     public int Health { get; set; }
-    public Action PrimaryAction { get; set; }
-    public List<IAction> Actions { get; set; } = new List<IAction>();
-    
-    public void PerformAction(IAction action)
+    public Action<Character> PrimaryAction { get; set; }
+
+    public Character( string name, int health )
     {
-        action.Execute(this);
+        Name = name;
+        Health = health;
     }
 }
