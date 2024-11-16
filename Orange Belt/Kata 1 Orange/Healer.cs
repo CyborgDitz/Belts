@@ -12,12 +12,12 @@ public class HealerClass : Character
             int healingAmount = maxHealth - target.Health;
             if (target.Health < 50)
             {
-                Console.WriteLine($"{Name} is healing {target.Name} by {healingAmount} points!");
-                target.Health = 100;s
+                Console.WriteLine($"{Name} is healing {target.Name} by {healingAmount} points because of low hp!");
+                target.Health = 100;
             }
             else
             {
-                Console.WriteLine($"{Name} healed thesmelf for {healingAmount} points!");
+                Console.WriteLine($"{Name} healed themself for {healingAmount} points!");
                 Health = maxHealth;
             }
         };

@@ -6,6 +6,7 @@ HealerClass healer = new HealerClass ("Healer",50 );
 Action<Character> attackAction = character =>
 {
     Console.WriteLine($"{character.Name} is attacking first due to low health!");
+    
 };
 
 // healer.PrimaryAction = (target) => Console.WriteLine($"{healer.Name} performs a powerful healing spell!");
@@ -25,7 +26,7 @@ Action<List<Character>> lowHealthAttackers = chars =>
             character.PrimaryAction(character);
            
         }
-        Console.WriteLine($"{character.Name} currenth health is now {character.Health}");
+        Console.WriteLine($"{character.Name} current health is now {character.Health}");
     }
   
 };
