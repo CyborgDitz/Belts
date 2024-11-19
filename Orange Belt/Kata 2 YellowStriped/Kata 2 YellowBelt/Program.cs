@@ -8,3 +8,13 @@ void OnHealthChanged(int newHealth)
 {
     Console.WriteLine($"[Event] Character's health changed to {newHealth}.");
 }
+
+void Attack(int target, int damage, Action<Character> action)
+{
+    target.health -= damage;
+        
+   
+    action(target);
+
+    OnHealthChanged(target);
+}
