@@ -1,6 +1,4 @@
-﻿using Kata_1_Orange;
-
-public class Character
+﻿public class Character
 {
     public string Name { get; private set; }
     public int Health { get; private set; }

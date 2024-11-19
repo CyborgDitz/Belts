@@ -1,7 +1,4 @@
-﻿using Kata_1_Orange;
-using Kata_1_Yellow_Striped;
-
-Character warrior = new Character ("Warrior",45 );
+﻿Character warrior = new Character ("Warrior",45 );
 Character healer = new Character("Healer", 55);
 healer.PrimaryAction = () => Console.WriteLine($"{healer.Name} performs a powerful healing spell!");
 
