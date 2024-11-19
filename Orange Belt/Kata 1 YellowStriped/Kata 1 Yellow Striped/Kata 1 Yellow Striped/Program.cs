@@ -1,6 +1,8 @@
 ﻿using Kata_1_Orange;
-Character warrior = new Character { Name = "Warrior", Health =45 };
-Character healer = new Character { Name = "Healer", Health = 50 };
+using Kata_1_Yellow_Striped;
+
+Character warrior = new Character ("Warrior",45 );
+Character healer = new Character("Healer", 55);
 healer.PrimaryAction = () => Console.WriteLine($"{healer.Name} performs a powerful healing spell!");
 
 warrior.PrimaryAction = () => Console.WriteLine($"{warrior.Name} is attacking!");
