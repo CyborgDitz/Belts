@@ -1,13 +1,13 @@
 public class Character
 {
-    public string Name { get; private set; }
-    public int Health { get; private set; }
+    private string _name { get; set; }
+    private int _health { get; set; }
     public Action PrimaryAction { get; set; }
     // public List<IAction> Actions { get; set; } = new List<IAction>();
     
     public Character(string name, int health)
     {
-        Name = name;
-        Health = health;
+        _name = name;
+        _health = health;
     }
 }
