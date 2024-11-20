@@ -8,3 +8,4 @@ var container = new AbilityContainer<IAbility>();
 container.AddAbility(attackAbility); //Separation of Concerns
 container.AddAbility(healAbility); //
 printer.PrintContainer(container); //Seperation of concerns and OCP
+//YAGNI, wanted to add features to orange belt level 2 but they were redundant for level 1.

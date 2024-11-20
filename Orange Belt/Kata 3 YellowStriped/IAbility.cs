@@ -6,4 +6,5 @@ public interface IAbility
 {
     string Name { get; }
     string Effect { get; }
+    
 }

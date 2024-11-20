@@ -1,5 +1,5 @@
 namespace Kata_3_YellowStriped;
-
+//Separation of Concerns, this class only does one thing and that is CONTAINMENT
 public class AbilityContainer<T>
 {
     private readonly List<T> _abilities = new List<T>();

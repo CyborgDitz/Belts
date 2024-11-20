@@ -6,5 +6,6 @@ public class AttackAbility:AbilityBase
     public AttackAbility(string name, string effect) : base(name, effect) 
     {
         //KISS (Keep it simple, stupid) its bloody empty lmao
+        //YAGNI: the assignement only needs the constructor variables to finish.
     }
 }
