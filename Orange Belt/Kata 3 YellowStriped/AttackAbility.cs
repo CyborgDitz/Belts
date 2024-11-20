@@ -1,13 +1,9 @@
 namespace Kata_3_YellowStriped;
 
-public class AttackAbility: IAbility
+public class AttackAbility:AbilityBase
 {
-    public string Name { get; set; }
-    public string Effect { get; set; }
-
-    public AttackAbility(string name, string effect)
+    public AttackAbility(string name, string effect) : base(name, effect)
     {
-        Name = name;
-        Effect = effect;
+        
     }
 }

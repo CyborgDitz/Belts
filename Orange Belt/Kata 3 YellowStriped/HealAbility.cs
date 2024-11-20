@@ -1,13 +1,9 @@
 namespace Kata_3_YellowStriped;
 
-public class HealAbility: IAbility
+public class HealAbility:AbilityBase
 {
-    public string Name { get; set; }
-    public string Effect { get; set; }
-
-    public HealAbility(string name, string effect)
+    public  HealAbility(string name, string effect): base(name, effect)
     {
-        Name = name;
-        Effect = effect;
+        
     }
 }

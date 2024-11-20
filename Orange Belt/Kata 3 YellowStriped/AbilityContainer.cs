@@ -2,16 +2,22 @@ namespace Kata_3_YellowStriped;
 
 public class AbilityContainer<T>
 {
-    private List<T> abilities = new List<T>();
+    private readonly List<T> _abilities = new List<T>();
 
     public void AddAbility(T ability)
     {
-        abilities.Add(ability);
+        _abilities.Add(ability);
     }
 
     public IEnumerable<T> GetAbilities()
     {
-        return abilities;
+        return _abilities;
     }
-    
+    public void PrintContainer(AbilityContainer<IAbility> abilities)
+    {
+        foreach (var ability in abilities.GetAbilities())
+        {
+            Console.WriteLine($"{ability.Name}: {ability.Effect}");
+        }
+    }
 }
