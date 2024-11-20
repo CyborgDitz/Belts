@@ -8,16 +8,8 @@ public class AbilityContainer<T>
     {
         _abilities.Add(ability);
     }
-
     public IEnumerable<T> GetAbilities()
     {
         return _abilities;
-    }
-    public void PrintContainer(AbilityContainer<IAbility> abilities)
-    {
-        foreach (var ability in abilities.GetAbilities())
-        {
-            Console.WriteLine($"{ability.Name}: {ability.Effect}");
-        }
     }
 }
