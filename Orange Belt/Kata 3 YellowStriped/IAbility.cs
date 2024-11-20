@@ -4,5 +4,6 @@ namespace Kata_3_YellowStriped;
 
 public interface IAbility
 {
-    public void Ability(string name, string effect);
+string Name {get; set;}
+string Effect { get; set; }
 }
