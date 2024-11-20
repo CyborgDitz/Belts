@@ -6,7 +6,7 @@ public class Character : IAttack
     private int _health { get; set; } //Encapsulation
     private int _damage { get; set; }
 
-    public Character(string name, int health, int damage)
+    public Character(string name, int health, int damage)//Encapsulation
     {
         _name = name;
         _health = health;
@@ -21,7 +21,7 @@ public class Character : IAttack
         Console.WriteLine($"{_name} attacked {target._name} for {_damage} damage!");
         target.HealthChanged?.Invoke(target._health); //Separation of Concerns
     }
- public void OnHealthChanged(int newHealth)
+ public void OnHealthChanged(int newHealth) //Separation of Concerns
  {
      Console.WriteLine($"[Event] Character's health changed to {newHealth}.");
  }
