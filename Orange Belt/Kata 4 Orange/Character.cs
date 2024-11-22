@@ -15,9 +15,10 @@ public abstract class Character
         _mana = mana;
     }
 
-    public void PrimaryAction()
+  
+    public virtual void PerformAction()
     {
-        
+       
     }
 
     public virtual int CalculateDamage()
@@ -32,10 +33,10 @@ public abstract class Character
 
     public virtual void UseMagic(int manaCost)
     {
-       int manaCostCheck = manaCost;
-       if (0 < manaCostCheck && manaCostCheck <= _mana)
+       if (0 < manaCost && manaCost <= _mana)
        {
-           _mana -= manaCostCheck;
+           _mana -= manaCost;
+           Console.WriteLine($"{Name} spent {manaCost} out of their {_mana} mana");
        }
        else
        {

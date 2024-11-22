@@ -6,6 +6,11 @@ public class Mage : Character
     {
     }
 
+    public override void PrimaryAction()
+    {
+        base.PrimaryAction(UseMagic());
+    }
+
     public override void UseMagic(int manaCost)
     { 
         base.UseMagic(manaCost); 
