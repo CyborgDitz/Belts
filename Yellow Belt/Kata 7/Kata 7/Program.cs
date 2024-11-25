@@ -1,7 +1,7 @@
 ﻿using DefaultNamespace;
 
-var player = new Player("Karate Kid", 155,5, 500);
-var enemy = new Enemy("OrcBjork", 200, 40, 303);
+var player = new Player("Karate Kid", 155,5, 500, 55);
+var enemy = new Enemy("OrcBjork", 200, 303);
 player.PlayerSheet();
 enemy.EnemySheet();
 
@@ -17,6 +17,6 @@ while (enemy.Health>=0)
 
 void CombatRound()
 {
-    player.Attack(55, enemy.Name);
-    enemy.TakeDamage(55);
+    player.Attack(player._damage, enemy.Name);
+    enemy.TakeDamage(player._damage);
 }

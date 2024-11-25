@@ -2,17 +2,19 @@ namespace DefaultNamespace;
 
 public class Player
 {
-    private string _name;
-    private int _health;
-    private int _level;
-    private int _experience;
+    public string _name { get; private set; }
+    public int _health { get; private set; }
+    public int _level { get; private set; }
+    public int _experience { get; private set; }
+    public int _damage { get; private set; }
 
-    public Player(string name, int health, int level, int experience)
+    public Player(string name, int health, int level, int experience, int damage)
     {
         _name = name;
         _health = health;
         _level = level;
         _experience = experience;
+        _damage = damage;
     }
 
     public void PlayerSheet()
