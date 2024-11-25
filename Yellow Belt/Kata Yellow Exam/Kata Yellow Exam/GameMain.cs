@@ -1,8 +1,7 @@
 ﻿using Kata_Yellow_Exam;
 GameData gameData = new GameData();
 string? playerName = CharacterCreation();
-Player player = new Player(playerName, 105, 0, 0);
-int randomPlayerdamage = next
+Player? player = new Player(playerName, 105, 5, 100, 0, 0);
 GameLoop();
 void GameLoop()
 {
@@ -35,7 +34,7 @@ void EnemyDefeat()
     player.GainExperience();
 }
 
-void CombatRound(Player player, Enemy enemy)
+void CombatRound(Player? player, Enemy? enemy)
 {
     while (player.IsAlive() && enemy.IsAlive())
     { 

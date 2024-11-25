@@ -3,18 +3,12 @@ namespace Kata_Yellow_Exam;
 public class GameData
 { 
     private Random _random = new Random();
-    private readonly Npc _npc;
-    private readonly Merchant _merchant;
+    private readonly Npc _npc = new();
+    private readonly Merchant _merchant = new();
     protected internal Enemy? CurrentEnemy { get; set; }
     readonly List<string> _enemyTypes = new List<string> { "Orc", "Goblino", "Warlock", "Carrotman" };
- 
-    public GameData()
-    {
-        _npc = new Npc();
-        _merchant = new Merchant();
-    }
-    
-   public void RandomEncounter()
+
+    public void RandomEncounter()
    {
        int encounterChance = _random.Next(1, 11);
        if (encounterChance <= 5)
@@ -40,9 +34,8 @@ public class GameData
         int randomList = _random.Next(_enemyTypes.Count);
         string randomType = _enemyTypes[randomList];
         int randomHealth = _random.Next(5, 33);
-        int randomEnemyDamage = _random.Next(5, 200000);
-    
-        return new Enemy(randomType, randomHealth, randomEnemyDamage,randomType);
+        
+        return new Enemy(randomType, randomHealth,randomType, 1,50);
     }
     
 }

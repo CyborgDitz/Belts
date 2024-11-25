@@ -4,8 +4,8 @@ public class Player : Entity
     private readonly int _maxHealth = 155;
     private int _level;
     private int _experience;
-    private int _expTreshold = 100;
     private readonly int _expGain = random.Next(5, 56);
+    private static int _expTreshold = 100;
     public int Level
     {
         get { return _level; }
@@ -18,8 +18,8 @@ public class Player : Entity
         set { _experience = Math.Max(value, 0); }
     }
 
-    public Player(string? name, int health, int level, int damageRoll, int experience) 
-        : base  (name, health, damageRoll)
+    public Player(string? name, int health, int minDmg, int maxDmg, int level, int experience) 
+        : base (name, health, minDmg, maxDmg)
     {
         Level = level;
         Experience = experience;
@@ -52,7 +52,7 @@ public class Player : Entity
         Level++;
         Console.WriteLine($"{Name} leveled up to {Level} level!");
     }
-    public void PlayerAction(ITakeDamage enemy)
+    public void PlayerAction(ITakeDamage? enemy)
     {
         switch (GetPlayerAction())
         {
