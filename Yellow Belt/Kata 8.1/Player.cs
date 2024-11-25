@@ -1,43 +1,58 @@
 namespace Kata_8;
-
 public class Player
 {
     private string _name;
     private int _health;
     private int _level;
     private int _experience;
-
-    public Player(string name, int health, int level, int experience)
+    public readonly int Damage;
+    public int Level
+    {
+        get { return _level; }
+         private set
+        {
+            _level = Math.Max(value, 0);
+        }
+    }
+    public int Experience
+    {
+        get { return _experience; }
+        private set
+        {
+            _experience = Math.Max(value, 0);
+        }
+    }
+    public Player(string name, int health,int damage, int level, int experience)
     {
         _name = name;
         _health = health;
-        _level = level;
-        _experience = experience;
+        Damage = damage;
+        Experience = experience;
+        Level = level;
+        
     }
-
     public void PlayerSheet()
     {
         Console.WriteLine(
             $"Player Name: {_name}\nHealth: {_health}\nLevel: {_level}\nExperience: {_experience}");
     }
-
     public void Attack(int damage, string target)
     {
         Console.WriteLine($"{_name} dealt {damage} damage to {target}!");
     }
-
     public void GainExp(int expGain)
     {
-        var expToLevel = 300;
-        _experience += expGain;
-        Console.WriteLine($"{_name} gained {expGain} exp!");
-        if (_experience >= expToLevel)
+        if (expGain > 0)
         {
-            _experience -= expToLevel;
-            LevelUp();
+            _experience += expGain;
+            Console.WriteLine($"{_name} gained {expGain} exp!");
+            while (_experience >= 100)
+            {
+                _experience -= 100;
+                LevelUp();
+            }
         }
     }
-
     private void LevelUp()
     {
         _level++;
