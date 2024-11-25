@@ -44,18 +44,19 @@ public class Player
     {
         if (expGain > 0)
         {
+            int expTreshold = 100;
             _experience += expGain;
             Console.WriteLine($"{_name} gained {expGain} exp!");
-            while (_experience >= 100)
+            while (_experience >= expTreshold)
             {
-                _experience -= 100;
+                _experience -= expTreshold;
                 LevelUp();
             }
         }
     }
     private void LevelUp()
     {
-        _level++;
+        Level++;
         Console.WriteLine($"{_name} leveled up to level {_level}!");
         Console.WriteLine($"{_name} has {_experience} experience left");
     }

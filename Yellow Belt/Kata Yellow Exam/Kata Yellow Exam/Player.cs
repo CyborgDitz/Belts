@@ -2,50 +2,58 @@
 public class Player : Entity
 { 
     private readonly int _maxHealth = 155;
-   private readonly int _expTreshold = 100;
-   public int Level { get; private set; }
-   public int Experience { get; private set; }
+    private int _level;
+    private int _experience;
+    private  int _expTreshold = 100;
+    private int _expGain = random.Next(5, 56);
+    public int Level
+    {
+        get { return _level; }
+        private set { _level = Math.Max(value, 0); }
+    }
+
+    public int Experience
+    {
+        get { return _experience;}
+        set { _experience = Math.Max(value, 0); }
+    }
+
     public Player(string? name, int health, int damage, int level, int experience) 
         : base  (name, health, damage)
     {
         Level = level;
         Experience = experience;
     }
-    public void PlayerHeal(int healed)
+    public void PlayerHeal(int healAmount)
     {
-      
-        Health += healed;
-        if (Health > _maxHealth)
+        _health += healAmount;
+        if (_health > _maxHealth)
         {
-            Health = _maxHealth;
+            _health = _maxHealth;
         }
-        Console.WriteLine($"{Name} heals {healed} health! Current health: {Health}");
+        Console.WriteLine($"{_name} heals {healAmount} health! Current health: {_health}");
         Thread.Sleep(1500);
     }
     
-    public void GainExperience(int exp)
+    public void GainExperience(int randomExp)
     {
-        int expGain = random.Next(5, 56);
-        Experience += expGain;
-        Console.WriteLine($"{Name} gains {expGain} experience!");
-        if (Experience > _expTreshold)
+        Experience += _expGain;
+        Console.WriteLine($"{_name} gains {_expGain} experience!");
+        if (Experience >= 100)
         {
+            Experience -= _expGain;
             LevelUp();
         }
-        
         Console.WriteLine($"Now has {Experience} experience.");
     }
-
-    public void LevelUp()
+    private void LevelUp()
     {
         Level++;
-        Experience -= _expTreshold;
-        Console.WriteLine($"{Name} leveled up to {Level} level!");
+        Console.WriteLine($"{_name} leveled up to {Level} level!");
     }
     public void PlayerAction(ITakeDamage enemy)
     {
-        string inputAction = GetPlayerAction();
-        switch (inputAction.ToLower())
+        switch (GetPlayerAction())
         {
             case "attack":
                 Attack(enemy);
@@ -56,11 +64,17 @@ public class Player : Entity
                 PlayerHeal(healRandomAmount);
                 break;
             }
+                default:
+            {
+                Console.WriteLine($"I couldnt understand your action!");
+                break;
+            }
         }
     }
     private string GetPlayerAction()
     {
         Console.WriteLine("Will you attack or heal?");
-        return Console.ReadLine()?.ToLower() ?? string.Empty; // Handles null or empty input safely
+        string inputGetAction= Console.ReadLine()?.ToLower();
+        return inputGetAction;
     }
 }
