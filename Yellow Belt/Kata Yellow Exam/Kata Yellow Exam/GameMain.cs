@@ -1,9 +1,11 @@
 ﻿using Kata_Yellow_Exam;
 GameData gameData = new GameData();
-void GameStart(GameData gameData1)
+string? playerName = CharacterCreation();
+Player player = new Player(playerName, 105, 0, 0);
+int randomPlayerdamage = next
+GameLoop();
+void GameLoop()
 {
-    Player player = gameData.Player;
-
     while (player.IsAlive())
     {
         gameData.RandomEncounter();
@@ -12,21 +14,25 @@ void GameStart(GameData gameData1)
             CombatRound(player, gameData.CurrentEnemy);
             if (!gameData.CurrentEnemy.IsAlive())
             {
-                EnemyDefeat(randomExp);
+                EnemyDefeat();
             }
         }
         
-        Thread.Sleep(1500);
+        Thread.Sleep(500);
     }
-
     Console.WriteLine("Game Over. You have been defeated!");
 }
 
-void EnemyDefeat(int i)
+string? CharacterCreation()
+{
+    Console.WriteLine("What is your name Adventurer?");
+    return Console.ReadLine();
+}
+void EnemyDefeat()
 {
     Console.WriteLine($"{gameData.CurrentEnemy.Type} has been defeated!");
     gameData.CurrentEnemy = null; 
-    player.GainExperience(randomExp);
+    player.GainExperience();
 }
 
 void CombatRound(Player player, Enemy enemy)

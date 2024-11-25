@@ -24,7 +24,7 @@ public class Merchant : ISpeak
         else
         {
             Console.WriteLine(_dialogue[3]);
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
         }
         
     }
@@ -37,7 +37,7 @@ public class Merchant : ISpeak
                 Console.WriteLine($"{i + 1}: {_inventory[i]}");
             }
 
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
             Console.WriteLine(_dialogue[2]);
             
             Console.WriteLine("Enter number or 'exit':");
@@ -49,7 +49,7 @@ public class Merchant : ISpeak
             {
                 Console.WriteLine($"You got a: {_inventory[itemNumber - 1]}");
                 _inventory.RemoveAt(itemNumber - 1);
-                Thread.Sleep(1500);
+                Thread.Sleep(500);
             }
             else
             {

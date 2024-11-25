@@ -4,8 +4,8 @@ public class Player : Entity
     private readonly int _maxHealth = 155;
     private int _level;
     private int _experience;
-    private  int _expTreshold = 100;
-    private int _expGain = random.Next(5, 56);
+    private int _expTreshold = 100;
+    private readonly int _expGain = random.Next(5, 56);
     public int Level
     {
         get { return _level; }
@@ -18,27 +18,28 @@ public class Player : Entity
         set { _experience = Math.Max(value, 0); }
     }
 
-    public Player(string? name, int health, int damage, int level, int experience) 
-        : base  (name, health, damage)
+    public Player(string? name, int health, int level, int damageRoll, int experience) 
+        : base  (name, health, damageRoll)
     {
         Level = level;
         Experience = experience;
     }
-    public void PlayerHeal(int healAmount)
+
+    private void PlayerHeal(int healAmount)
     {
-        _health += healAmount;
-        if (_health > _maxHealth)
+        Health += healAmount;
+        if (Health > _maxHealth)
         {
-            _health = _maxHealth;
+            Health = _maxHealth;
         }
-        Console.WriteLine($"{_name} heals {healAmount} health! Current health: {_health}");
-        Thread.Sleep(1500);
+        Console.WriteLine($"{Name} heals {healAmount} health! Current health: {Health}");
+        Thread.Sleep(500);
     }
     
-    public void GainExperience(int randomExp)
+    public void GainExperience()
     {
         Experience += _expGain;
-        Console.WriteLine($"{_name} gains {_expGain} experience!");
+        Console.WriteLine($"{Name} gains {_expGain} experience!");
         if (Experience >= 100)
         {
             Experience -= _expGain;
@@ -49,16 +50,18 @@ public class Player : Entity
     private void LevelUp()
     {
         Level++;
-        Console.WriteLine($"{_name} leveled up to {Level} level!");
+        Console.WriteLine($"{Name} leveled up to {Level} level!");
     }
     public void PlayerAction(ITakeDamage enemy)
     {
         switch (GetPlayerAction())
         {
             case "attack":
+                case "1":
                 Attack(enemy);
                 break;
             case "heal":
+                case "2":
             {
                 int healRandomAmount = random.Next(1, 100);
                 PlayerHeal(healRandomAmount);
