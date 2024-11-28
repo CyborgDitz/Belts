@@ -21,8 +21,5 @@ public class Character : IAttack
         Console.WriteLine($"{_name} attacked {target._name} for {_damage} damage!");
         target.HealthChanged?.Invoke(target._health); //Separation of Concerns
     }
- public void OnHealthChanged(int newHealth) //Separation of Concerns
- {
-     Console.WriteLine($"[Event] Character's health changed to {newHealth}.");
- }
+
 }

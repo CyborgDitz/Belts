@@ -29,7 +29,7 @@ Action<List<Character>> lowHealthHeal = chars =>
 
 // Func<List<Character>, bool> lowHealthAttackers = (characters) =>
 // {
-//     return characters.Any(character => character.Health < 50);
+//     return characters.Any(charcter => character.Health < 50);
 // };
 Action<List<Character>> lowHealthAttackers = (characters) =>
 {
