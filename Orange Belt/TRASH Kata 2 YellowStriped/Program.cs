@@ -9,7 +9,7 @@ player.HealthChanged += OnHealthChanged; //DRy fix
 player.Attack(goblino); //KISS (Keep it simple, stupid) //Separation of Concerns
 goblino.Attack(player);
 
-public static void OnHealthChanged(int newHealth) //OCP
+static void OnHealthChanged(int newHealth) //OCP
  {
      Console.WriteLine($"[Event] Character's health changed to {newHealth}.");
  }
