@@ -1,38 +1,17 @@
 ﻿using Kata_1_Orange2;
-
-Character warrior = new Character ("Warrior",55 );
-Character healer = new Character("Healer", 45);
-healer.PrimaryAction = () => Console.WriteLine($"{healer} performs a powerful healing spell!");
-warrior.PrimaryAction = () => Console.WriteLine($"{warrior} is attacking!");
-
-Action<Character> attackFirstAction = character =>
-{
-    Console.WriteLine($"{character} is acting first due to low health!");
-    character.PrimaryAction();
-};
-
-
+Character warrior = new Character ("Warrior",45 );
+Character healer = new Character("Healer", 51);
+healer.PrimaryAction = (target) => Console.WriteLine($"{healer.Name} performs a powerful healing spell!");
+warrior.PrimaryAction = (target) => Console.WriteLine($"{warrior.Name} is attacking!");
 List<Character> characters = new List<Character> { warrior, healer };
 
-Action<List<Character>> lowHealthHeal = chars =>
-{
-    Character lowestHealthCharacter = chars.FirstOrDefault();
-    foreach (Character character in chars)
-    {
-        if (character < lowestHealthCharacter.Health)
-        {
-            lowestHealthCharacter = character;
-        }
-    }
 
-    healer.PrimaryAction();
-    // return lowestHealthCharacter;
+Action<Character> attackFirstAction = character =>
+{var charFirst = characters.First();
+    Console.WriteLine($"{character.Name} is acting first due to low health! ({character.Health} < 50");
+    character.PrimaryAction([charFirst]);
 };
 
-// Func<List<Character>, bool> lowHealthAttackers = (characters) =>
-// {
-//     return characters.Any(charcter => character.Health < 50);
-// };
 Action<List<Character>> lowHealthAttackers = (characters) =>
 {
     foreach (Character character in characters)
@@ -40,17 +19,28 @@ Action<List<Character>> lowHealthAttackers = (characters) =>
         if (character.Health < 50)
         {
             attackFirstAction(character);
+            break;
         }
     }
-    
 };
-
-void Stuff()
+Action<List<Character>> lowHealthHeal = chars =>
+{
+    Character? lowestHealthCharacter = chars.FirstOrDefault();
+    foreach (Character? character in chars)
+    {
+        if (lowestHealthCharacter != null && character.Health < lowestHealthCharacter.Health)
+        {
+            lowestHealthCharacter = character;
+        }
+        healer.PrimaryAction(chars);
+        Console.WriteLine($"{healer.Name} heals the lowest health target, which is {lowestHealthCharacter.Name}." +
+                          $" (Current health {character.Health}).!");
+        break;
+    }
+};
+void Combat()
 {
     lowHealthAttackers(characters);
     lowHealthHeal(characters);
 }
-
-Stuff();
-
-namespace Kata_1_Orange2;
+Combat();

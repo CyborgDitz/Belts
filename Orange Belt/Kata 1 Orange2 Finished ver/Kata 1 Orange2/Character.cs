@@ -1,14 +1,12 @@
 namespace Kata_1_Orange2;
 public class Character
 {
-    private string _name { get; set; }
-    private int _health { get; set; }
-    public Action PrimaryAction { get; set; }
-    // public List<IAction> Actions { get; set; } = new List<IAction>();
-    
+    public string Name { get; private set; }
+    public int Health { get; private set; }
+    public Action<List<Character>> PrimaryAction { get; set; }
     public Character(string name, int health)
     {
-        _name = name;
-        _health = health;
+        Name = name;
+        Health = health;
     }
 }
