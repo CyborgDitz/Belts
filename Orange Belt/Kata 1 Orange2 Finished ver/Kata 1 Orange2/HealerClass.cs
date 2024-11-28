@@ -1,6 +1,5 @@
 namespace Kata_1_Orange2;
-
-public class HealerRole
+public class HealerRole 
 {
     Action<List<Character>> lowHealthHeal = chars =>
     {

@@ -7,10 +7,6 @@ Action<Character> attackAction = character =>
 {
     character.PrimaryAction(character);
 };
-
-// healer.PrimaryAction = (target) => Console.WriteLine($"{healer.Name} performs a powerful healing spell!");
-// warrior.PrimaryAction = (target) => Console.WriteLine($"{warrior.Name} is attacking!");
-
 Action<List<Character>> lowHealthAttackers = chars =>
 {
     foreach (var character in chars)
